@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   TextInput,
   View,
   TouchableOpacity,
   Image,
   StyleSheet,
-  TouchableWithoutFeedback,
 } from 'react-native';
 
-export const KeyboardPanel = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+export const KeyboardPanel = ({ setMessage }) => {
+  const [text, setText] = React.useState('');
+
+  const onChangeText = e => {
+    setText(e);
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback>
-        <TouchableOpacity style={styles.button}>
-          <Image source={require('../img/emoji-button.png')} />
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.button}>
+        <Image source={require('../img/emoji-button.png')} />
+      </TouchableOpacity>
 
-        <TextInput style={styles.input} placeholder="Type your text here..." />
+      <TextInput
+        style={styles.input}
+        placeholder="Type your text here..."
+        onChangeText={onChangeText}
+      />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => setModalVisible(true)}>
-          <Image source={require('../img/papper-clip.png')} />
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => null}>
+        <Image source={require('../img/papper-clip.png')} />
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-          <Image source={require('../img/send-arrow.png')} />
-        </TouchableOpacity>
-      </TouchableWithoutFeedback>
+      <TouchableOpacity style={styles.button} onPress={() => setMessage(text)}>
+        <Image source={require('../img/send-arrow.png')} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -43,10 +46,8 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    backgroundColor: 'red',
   },
   input: {
     flex: 1,
-    backgroundColor: 'lightgrey',
   },
 });
