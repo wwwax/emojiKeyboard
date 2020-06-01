@@ -18,7 +18,6 @@ class KeyboardView extends React.Component {
                 ]}>
                 <Text>Keyboard View</Text>
                 <Text>{this.props.title}</Text>
-
                 <TouchableOpacity
                     testID={'click-me'}
                     style={styles.button}
@@ -44,7 +43,6 @@ class AnotherKeyboardView extends React.Component {
                 ]}>
                 <Text>Another Keyboard View</Text>
                 <Text>{this.props.title}</Text>
-
                 <TouchableOpacity
                     testID={'toggle-fs'}
                     style={styles.button}
