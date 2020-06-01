@@ -1,53 +1,61 @@
 import React from 'react';
 import {
-  TextInput,
-  View,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
+    TextInput,
+    View,
+    TouchableOpacity,
+    Image,
+    StyleSheet,
 } from 'react-native';
+// import { Example } from './Example';
 
 export const KeyboardPanel = ({ setMessage }) => {
-  const [text, setText] = React.useState('');
+    const [text, setText] = React.useState('');
 
-  const onChangeText = e => {
-    setText(e);
-  };
+    const onChangeText = e => {
+        setText(e);
+    };
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
-        <Image source={require('../img/emoji-button.png')} />
-      </TouchableOpacity>
+    const sendMessage = () => {
+        setMessage(text);
+        setText('');
+    };
 
-      <TextInput
-        style={styles.input}
-        placeholder="Type your text here..."
-        onChangeText={onChangeText}
-      />
+    return (
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.button}>
+                <Image source={require('../img/emoji-button.png')} />
+            </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => null}>
-        <Image source={require('../img/papper-clip.png')} />
-      </TouchableOpacity>
+            <TextInput
+                style={styles.input}
+                placeholder="Type your text here..."
+                value={text}
+                onChangeText={onChangeText}
+            />
 
-      <TouchableOpacity style={styles.button} onPress={() => setMessage(text)}>
-        <Image source={require('../img/send-arrow.png')} />
-      </TouchableOpacity>
-    </View>
-  );
+            <TouchableOpacity style={styles.button} onPress={() => null}>
+                <Image source={require('../img/papper-clip.png')} />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.button} onPress={sendMessage}>
+                <Image source={require('../img/send-arrow.png')} />
+            </TouchableOpacity>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderTopWidth: 2,
-    borderColor: 'orange',
-  },
-  button: {
-    padding: 10,
-  },
-  input: {
-    flex: 1,
-  },
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderTopWidth: 2,
+        borderColor: 'teal',
+        backgroundColor: 'orange',
+    },
+    button: {
+        padding: 10,
+    },
+    input: {
+        flex: 1,
+    },
 });
