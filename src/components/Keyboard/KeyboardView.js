@@ -4,6 +4,7 @@ import { KeyboardRegistry } from 'react-native-keyboard-input';
 
 class KeyboardView extends React.Component {
     onButtonPress = () => {
+        console.log('click');
         KeyboardRegistry.onItemSelected('KeboardView', {
             message: 'item selected from KeyboardView',
         });
