@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import { Content } from './src/components/Content';
 import { KeyboardPanel } from './src/components/KeyboardPanel';
-import KeyboardInput from './src/components/Keyboard/KeyboardInput';
+// import KeyboardInput from './src/components/Keyboard/KeyboardInput';
+import KeyboardInput from './src/components/demo/demoScreen';
 
 const App = () => {
     const [message, setMessage] = useState('');
